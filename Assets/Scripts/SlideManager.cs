@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class SlideManager : MonoBehaviour
@@ -9,6 +11,26 @@ public class SlideManager : MonoBehaviour
     public int currentSlide = 0;
 
     private bool isTransitioning = false;
+
+    [SerializeField] private TextMeshProUGUI textMeshProUGUI;
+
+    private void Start()
+    {
+        UpdateSlideIndex();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            NextSlide();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            PreviousSlide();
+        }
+    }
 
     public void NextSlide()
     {
@@ -22,6 +44,23 @@ public class SlideManager : MonoBehaviour
                 currentSlide++;
                 slides[currentSlide].SetActive(true);
                 SetAsEmpty();
+                UpdateSlideIndex();
+            };
+        }
+    }
+
+    public void PreviousSlide()
+    {
+        if (currentSlide > 0 && !isTransitioning)
+        {
+            SetAsFull();
+            slides[currentSlide - 1].SetActive(true);
+            slides[currentSlide - 1].transform.DOLocalMoveY(0, 1, false).onComplete += () =>
+            {
+                slides[currentSlide].SetActive(false);
+                currentSlide--;
+                SetAsEmpty();
+                UpdateSlideIndex();
             };
         }
     }
@@ -36,24 +75,8 @@ public class SlideManager : MonoBehaviour
         isTransitioning = false;
     }
 
-    private IEnumerator AnimateSlideWithDirection(bool isForward)
+    private void UpdateSlideIndex()
     {
-        yield return new WaitForSeconds(.5f);
-        NextSlide();
-    }
-
-    public void PreviousSlide()
-    {
-        if (currentSlide > 0 && !isTransitioning)
-        {
-            SetAsFull();
-            slides[currentSlide - 1].SetActive(true);
-            slides[currentSlide - 1].transform.DOLocalMoveY(0, 1, false).onComplete += () =>
-            {
-                slides[currentSlide].SetActive(false);
-                currentSlide--;
-                SetAsEmpty();
-            };
-        }
+        textMeshProUGUI.text = (currentSlide + 1).ToString();
     }
 }
