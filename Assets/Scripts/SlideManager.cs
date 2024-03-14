@@ -7,17 +7,46 @@ using UnityEngine;
 
 public class SlideManager : MonoBehaviour
 {
-    public GameObject[] slides;
-    public int currentSlide = 0;
+    private GameObject[] _slides;
 
-    private bool isTransitioning = false;
+    [SerializeField] private Transform slidesParent;
+
+    private int _currentSlide = 0;
+
+    private bool _isTransitioning = false;
 
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
     private void Start()
     {
         UpdateSlideIndex();
+        SetUpSlides();
     }
+
+    private void SetUpSlides()
+    {
+        var parentTransform = slidesParent.transform;
+
+        _slides = new GameObject[parentTransform.childCount];
+
+        for (int i = 0; i < parentTransform.childCount; i++)
+        {
+            _slides[i] = parentTransform.GetChild(parentTransform.childCount - (i + 1)).gameObject;
+
+            // Activate only the first slide and deactivate the rest
+            if (i != 0)
+            {
+                _slides[i].SetActive(false);
+            }
+            else
+            {
+                _slides[i].SetActive(true);
+            }
+        }
+
+        Debug.Log("Total slide count: " + _slides.Length);
+    }
+
 
     private void Update()
     {
@@ -34,15 +63,15 @@ public class SlideManager : MonoBehaviour
 
     public void NextSlide()
     {
-        if (currentSlide < slides.Length - 1 && !isTransitioning)
+        if (_currentSlide < _slides.Length - 1 && !_isTransitioning)
         {
             SetAsFull();
-            slides[currentSlide + 1].SetActive(true);
-            slides[currentSlide].transform.DOLocalMoveY(1200, 0.2f, false).onComplete += () =>
+            _slides[_currentSlide + 1].SetActive(true);
+            _slides[_currentSlide].transform.DOLocalMoveY(1200, 0.2f, false).onComplete += () =>
             {
-                slides[currentSlide].SetActive(false);
-                currentSlide++;
-                slides[currentSlide].SetActive(true);
+                _slides[_currentSlide].SetActive(false);
+                _currentSlide++;
+                _slides[_currentSlide].SetActive(true);
                 SetAsEmpty();
                 UpdateSlideIndex();
             };
@@ -51,14 +80,14 @@ public class SlideManager : MonoBehaviour
 
     public void PreviousSlide()
     {
-        if (currentSlide > 0 && !isTransitioning)
+        if (_currentSlide > 0 && !_isTransitioning)
         {
             SetAsFull();
-            slides[currentSlide - 1].SetActive(true);
-            slides[currentSlide - 1].transform.DOLocalMoveY(0, 0.2f, false).onComplete += () =>
+            _slides[_currentSlide - 1].SetActive(true);
+            _slides[_currentSlide - 1].transform.DOLocalMoveY(0, 0.2f, false).onComplete += () =>
             {
-                slides[currentSlide].SetActive(false);
-                currentSlide--;
+                _slides[_currentSlide].SetActive(false);
+                _currentSlide--;
                 SetAsEmpty();
                 UpdateSlideIndex();
             };
@@ -67,16 +96,16 @@ public class SlideManager : MonoBehaviour
 
     private void SetAsFull()
     {
-        isTransitioning = true;
+        _isTransitioning = true;
     }
 
     private void SetAsEmpty()
     {
-        isTransitioning = false;
+        _isTransitioning = false;
     }
 
     private void UpdateSlideIndex()
     {
-        textMeshProUGUI.text = (currentSlide + 1).ToString();
+        textMeshProUGUI.text = (_currentSlide + 1).ToString();
     }
 }

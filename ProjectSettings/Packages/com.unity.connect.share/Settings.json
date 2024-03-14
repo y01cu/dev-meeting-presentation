@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"E:/GameDev/UnityProjects/Presentation_DevMeeting/WebGL Builds/v0.3;E:/GameDev/UnityProjects/Presentation_DevMeeting/WebGL Builds/v0.2;E:/GameDev/UnityProjects/Presentation_DevMeeting/WebGL Builds;;;;;;;\"}"
+                "value": "{\"m_Value\":\"E:/GameDev/UnityProjects/Presentation_DevMeeting/WebGL Builds/v0.4.0;E:/GameDev/UnityProjects/Presentation_DevMeeting/WebGL Builds/v0.3;E:/GameDev/UnityProjects/Presentation_DevMeeting/WebGL Builds/v0.2;E:/GameDev/UnityProjects/Presentation_DevMeeting/WebGL Builds;;;;;;\"}"
             }
         ]
     }
