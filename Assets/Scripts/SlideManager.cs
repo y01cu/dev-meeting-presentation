@@ -38,7 +38,7 @@ public class SlideManager : MonoBehaviour
         {
             SetAsFull();
             slides[currentSlide + 1].SetActive(true);
-            slides[currentSlide].transform.DOLocalMoveY(1200, 1, false).onComplete += () =>
+            slides[currentSlide].transform.DOLocalMoveY(1200, 0.2f, false).onComplete += () =>
             {
                 slides[currentSlide].SetActive(false);
                 currentSlide++;
@@ -55,7 +55,7 @@ public class SlideManager : MonoBehaviour
         {
             SetAsFull();
             slides[currentSlide - 1].SetActive(true);
-            slides[currentSlide - 1].transform.DOLocalMoveY(0, 1, false).onComplete += () =>
+            slides[currentSlide - 1].transform.DOLocalMoveY(0, 0.2f, false).onComplete += () =>
             {
                 slides[currentSlide].SetActive(false);
                 currentSlide--;
