@@ -1165,7 +1165,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '2023''te gelinen nokta
 
-    video'
+    video_1 > 21:58'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2140,7 +2140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Atari, Pong (1972)\n\u0130lk ticari ba\u015Far\u0131\nVideo"
+  m_text: "Atari, Pong (1972)\n\u0130lk ticari ba\u015Far\u0131\nvideo_0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3408,7 +3408,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "2004 - OTE\n\xC7oklu platform deste\u011Fi\nDemokratize etmek hedefi\nGiri\u015F
     seviyesi i\xE7in kolay kullan\u0131m\nZamanla film, otomotiv, mimari, m\xFChendislik,\nin\u015Faat
-    sekt\xF6rleri\nBa\u015Fta Mac\n"
+    sekt\xF6rleri\nBa\u015Fta Mac\n2008 App Store\nvideo_1 > 13:15"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7531,7 +7531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1745685415
 RectTransform:
   m_ObjectHideFlags: 0
