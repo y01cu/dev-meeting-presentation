@@ -17,6 +17,8 @@ public class SlideManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
 
+    private float _transitionSpeed = 0.3f;
+
     private void Start()
     {
         UpdateSlideIndex();
@@ -67,7 +69,7 @@ public class SlideManager : MonoBehaviour
         {
             SetAsFull();
             _slides[_currentSlide + 1].SetActive(true);
-            _slides[_currentSlide].transform.DOLocalMoveY(1200, 0.2f, false).onComplete += () =>
+            _slides[_currentSlide].transform.DOLocalMoveY(1200, _transitionSpeed).onComplete += () =>
             {
                 _slides[_currentSlide].SetActive(false);
                 _currentSlide++;
@@ -84,7 +86,7 @@ public class SlideManager : MonoBehaviour
         {
             SetAsFull();
             _slides[_currentSlide - 1].SetActive(true);
-            _slides[_currentSlide - 1].transform.DOLocalMoveY(0, 0.2f, false).onComplete += () =>
+            _slides[_currentSlide - 1].transform.DOLocalMoveY(0, _transitionSpeed).onComplete += () =>
             {
                 _slides[_currentSlide].SetActive(false);
                 _currentSlide--;
